@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Form Preview</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #static-content,
+        #dynamic-form {
+            width: 45%;
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin: 10px;
+            overflow-y: auto;
+        }
+
+        input {
+            font-size: 16px;
+            font-weight: 500;
+            padding: 10px 5px;
+            border-radius: 4px;
+            border: 1px solid rgb(132, 132, 132);
+            background-color: white;
+        }
+
+        body {
+            height: 100vh;
+        }
+
+
+
+        form {
+            display: grid;
+            /* grid-template-columns: 1fr 1fr; */
+        }
+
+        #dynamic-form label {
+            font-size: 20px;
+            font-weight: 700;
+            color: black;
+        }
+
+        .flexbody {
+            display: flex;
+            gap: 5px;
+        }
+
+        #static-content {
+            height: 100vh;
+            flex-basis: 65%;
+        }
+
+        #dynamic-form {
+            height: 100vh;
+            flex-basis: 35%;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flexbody">
+        <div id="static-content">
+            <!-- Static content will be loaded here -->
+        </div>
+        <div id="dynamic-form">
+            <!-- Dynamic form will be loaded here -->
+        </div>
+    </div>
+
+    <script>
+        function loadStaticContent() {
+            fetch('index.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('static-content').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading static content:', error));
+        }
+
+        function createDynamicForm(jsonConfig) {
+            const dynamicForm = document.createElement('form');
+            for (const sectionKey in jsonConfig.sections) {
+                const section = jsonConfig.sections[sectionKey];
+                for (const fieldKey in section) {
+                    const field = section[fieldKey];
+                    if (field?.display_text) {
+                        const label = document.createElement('label');
+                        label.textContent = field.display_text;
+                        const input = document.createElement('input');
+                        input.setAttribute('type', 'text');
+                        input.value = field.display_text; // Initial value from JSON
+                        input.customProperty = field.xpath;
+
+                        const br = document.createElement('br');
+
+                        input.addEventListener('input', function (event) {
+                            const xpath = input.customProperty;
+                            if (xpath) {
+                                const targetElement = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+                                if (targetElement) {
+                                    targetElement.textContent = input.value;
+                                    // Scroll to the target element in index.html
+                                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                                }
+                            }
+                        });
+
+                        dynamicForm.appendChild(label);
+                        dynamicForm.appendChild(input);
+                        dynamicForm.appendChild(br);
+                    }
+                    else if (fieldKey == 'events') {
+                        // console.log(section.events)
+                        // fieldKey
+                        section.events.map((item,index) => {
+                            // console.log(item)
+                            if(index==0){
+                                const label = document.createElement('label');
+                                label.textContent = item.name;
+                                const input = document.createElement('input');
+                                input.setAttribute('type', 'file');
+                                input.customProperty = item.image_xpath;
+    
+                                const br = document.createElement('br');
+    
+                                input.addEventListener('click', function (event) {
+                                    const xpath = input.customProperty;
+                                    if (xpath) {
+                                        // console.log(xpath)
+                                        const targetImage = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+                                        if (targetImage) {
+                                            targetImage.scrollIntoView({ behavior: 'smooth' });
+                                        }
+                                    }
+    
+                                })
+    
+                                input.addEventListener('change', function (event) {
+                                    const xpath = input.customProperty;
+                                    if (xpath) {
+                                        // console.log(xpath)
+                                        const targetImage = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+                                        // console.log(targetImage)
+                                        if (targetImage) {
+                                            targetImage.scrollIntoView({ behavior: 'smooth' });
+                                            const file = event.target.files[0];
+                                            const reader = new FileReader();
+                                            reader.onload = function (e) {
+                                                // console.log(134)
+                                                targetImage.setAttribute('src', e.target.result);
+                                            };
+                                            reader.readAsDataURL(file);
+                                        }
+                                    }
+                                });
+    
+                                dynamicForm.appendChild(label);
+                                dynamicForm.appendChild(input);
+                                dynamicForm.appendChild(br);
+                            }
+                        
+                        })
+                    }
+                }
+            }
+            document.getElementById('dynamic-form').appendChild(dynamicForm);
+        }
+
+        function loadJSONAndCreateForm() {
+            fetch('sample.json')
+                .then(response => response.json())
+                .then(data => {
+                    createDynamicForm(data);
+                })
+                .catch(error => console.error('Error loading JSON configuration:', error));
+        }
+
+        window.onload = function () {
+            loadStaticContent();
+            loadJSONAndCreateForm();
+        };
+    </script>
+</body>
+
+</html>

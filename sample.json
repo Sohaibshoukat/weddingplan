@@ -1,0 +1,190 @@
+{
+  
+  "sections": {
+    "About": {
+      "title": {
+        "display_text": "Groom & Bride",
+        "default_text": "Groom & Bride",
+        "xpath": "//*[@id='header-carousel']/div/div[1]/div/div/h1",
+        "font_color": "#000000",
+        "font_name": "Arial"
+      },
+      "Groom": {
+        "display_text": "The Groom",
+        "default_text": "The Groom",
+        "xpath": "//div[@id='about']//div[@class='col-md-6 p-0 text-center text-md-right']//h3",
+        "font_color": "#000000",
+        "font_name": "Arial"
+      },
+      "Bride": {
+        "display_text": "The Bride",
+        "default_text": "The Bride",
+        "xpath": "//div[@id='about']//div[@class='col-md-6 p-0 text-center text-md-left']//h3",
+        "font_color": "#000000",
+        "font_name": "Arial"
+      }
+    },
+    "Story": {
+      "title": {
+        "display_text": "Our Love Story",
+        "default_text": "Our Love Story",
+        "xpath": "//div[@id='story']//h1[@class='font-secondary display-4']",
+        "font_color": "#FFFFFF",
+        "font_name": "Arial"
+      },
+      "events": [
+        {
+          "name": "First Meet",
+          "date": "01 Jan 2050",
+          "description": "Lorem elitr magna stet rebum dolores sed...",
+          "image_xpath": "//div[@id='story']//div[@class='container timeline position-relative p-0']//div[@class='row']//div[@class='col-md-6 text-center text-md-right']//img",
+          "image_width": "300px",
+          "image_height": "200px"
+        },
+        {
+          "name": "First Date",
+          "date": "01 Jan 2050",
+          "description": "Lorem elitr magna stet rebum dolores sed...",
+          "image_xpath": "/html/body/div[1]/div[3]/div/div[3]/div[1]/img",
+          "image_width": "300px",
+          "image_height": "200px"
+        },
+        {
+          "name": "Proposal",
+          "date": "01 Jan 2050",
+          "description": "Lorem elitr magna stet rebum dolores sed...",
+          "image_xpath": "/html/body/div[1]/div[4]/div/div[2]/div[3]/div[1]/img",
+          "image_width": "300px",
+          "image_height": "200px"
+        },
+        {
+          "name": "Engagement",
+          "date": "01 Jan 2050",
+          "description": "Lorem elitr magna stet rebum dolores sed...",
+          "image_xpath": "/html/body/div[1]/div[4]/div/div[2]/div[4]/div[2]/img",
+          "image_width": "300px",
+          "image_height": "200px"
+        }
+      ]
+    },
+    "Gallery": {
+      "title": {
+        "display_text": "Our Photo Gallery",
+        "default_text": "Our Photo Gallery",
+        "xpath": "/html/body/div[1]/div[5]/div[1]/h1",
+        "font_color": "#FFFFFF",
+        "font_name": "Arial"
+      }
+    },
+    "Event": {
+      "title": {
+        "display_text": "Our Wedding Event",
+        "default_text": "Our Wedding Event",
+        "xpath": "//div[@id='event']//h1[@class='font-secondary display-4']",
+        "font_color": "#000000",
+        "font_name": "Arial"
+      },
+      "reception": {
+        "name": "The Reception",
+        "location": "123 Street, New York, USA",
+        "time": "12:00AM - 13:00PM",
+        "image_xpath": "//div[@id='event']//div[@class='col-md-6 border-right border-primary']//img",
+        "image_width": "400px",
+        "image_height": "300px"
+      },
+      "party": {
+        "name": "Wedding Party",
+        "location": "123 Street, New York, USA",
+        "time": "12:00AM - 13:00PM",
+        "image_xpath": "//div[@id='event']//div[@class='col-md-6']//img",
+        "image_width": "400px",
+        "image_height": "300px"
+      }
+    },
+    "Family": {
+      "title": {
+        "display_text": "Groomsmen & Bridesmaid",
+        "default_text": "Groomsmen & Bridesmaid",
+        "xpath": "//div[@id='family']//h1[@class='font-secondary display-4']",
+        "font_color": "#000000",
+        "font_name": "Arial"
+      }
+    },
+    "RSVP": {
+      "title": {
+        "display_text": "RSVP",
+        "default_text": "RSVP",
+        "xpath": "//div[@id='rsvp']//h1[@class='font-secondary display-4']",
+        "font_color": "#000000",
+        "font_name": "Arial"
+      },
+      "form": {
+        "name_label": {
+          "display_text": "Name",
+          "default_text": "Name",
+          "xpath": "//div[@id='rsvp']//form//label[contains(text(),'Name')]",
+          "font_color": "#000000",
+          "font_name": "Arial"
+        },
+        "email_label": {
+          "display_text": "Email",
+          "default_text": "Email",
+          "xpath": "//div[@id='rsvp']//form//label[contains(text(),'Email')]",
+          "font_color": "#000000",
+          "font_name": "Arial"
+        },
+        "guests_label": {
+          "display_text": "Number of Guests",
+          "default_text": "Number of Guests",
+          "xpath": "//div[@id='rsvp']//form//label[contains(text(),'Number of Guests')]",
+          "font_color": "#000000",
+          "font_name": "Arial"
+        },
+        "message_label": {
+          "display_text": "Message",
+          "default_text": "Message",
+          "xpath": "//div[@id='rsvp']//form//label[contains(text(),'Message')]",
+          "font_color": "#000000",
+          "font_name": "Arial"
+        },
+        "submit_button": {
+          "display_text": "Submit",
+          "default_text": "Submit",
+          "xpath": "//div[@id='rsvp']//form//button[@type='submit']",
+          "font_color": "#FFFFFF",
+          "font_name": "Arial"
+        }
+      }
+    },
+    "Contact": {
+      "title": {
+        "display_text": "Contact Us",
+        "default_text": "Contact Us",
+        "xpath": "//div[@id='contact']//h1[@class='font-secondary display-4']",
+        "font_color": "#000000",
+        "font_name": "Arial"
+      },
+      "address": {
+        "display_text": "123 Street, New York, USA",
+        "default_text": "123 Street, New York, USA",
+        "xpath": "//div[@id='contact']//p[@class='font-secondary lead']",
+        "font_color": "#000000",
+        "font_name": "Arial"
+      },
+      "email": {
+        "display_text": "example@example.com",
+        "default_text": "example@example.com",
+        "xpath": "//div[@id='contact']//p[@class='font-secondary lead'][2]",
+        "font_color": "#000000",
+        "font_name": "Arial"
+      },
+      "phone": {
+        "display_text": "+1234567890",
+        "default_text": "+1234567890",
+        "xpath": "//div[@id='contact']//p[@class='font-secondary lead'][3]",
+        "font_color": "#000000",
+        "font_name": "Arial"
+      }
+    }
+  }
+}
